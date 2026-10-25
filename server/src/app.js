@@ -8,6 +8,8 @@ import { requireAuth } from './middleware/auth.js';
 import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import matchRoutes from './routes/matches.js';
+import groupRoutes from './routes/groups.js';
+import questionRoutes from './routes/questions.js';
 
 export function createApp() {
   const app = express();
@@ -24,6 +26,8 @@ export function createApp() {
   app.use('/api', requireAuth);
   app.use('/api/users', userRoutes);
   app.use('/api/matches', matchRoutes);
+  app.use('/api/groups', groupRoutes);
+  app.use('/api/questions', questionRoutes);
 
   app.use(notFoundHandler);
   app.use(errorHandler);

@@ -8,9 +8,11 @@ export function notFoundHandler(_req, _res, next) {
 // eslint-disable-next-line no-unused-vars
 export function errorHandler(err, _req, res, _next) {
   if (err instanceof ZodError) {
+    const first = err.issues[0];
+    const field = first?.path?.join('.');
     return res.status(400).json({
       error: {
-        message: err.issues[0]?.message || 'Invalid input',
+        message: first ? (first.message === 'Required' && field ? `${field} is required` : first.message) : 'Invalid input',
         details: err.issues.map((i) => ({ path: i.path.join('.'), message: i.message })),
       },
     });
