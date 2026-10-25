@@ -6,6 +6,8 @@ import { env } from './config/env.js';
 import { errorHandler, notFoundHandler } from './middleware/error.js';
 import { requireAuth } from './middleware/auth.js';
 import authRoutes from './routes/auth.js';
+import userRoutes from './routes/users.js';
+import matchRoutes from './routes/matches.js';
 
 export function createApp() {
   const app = express();
@@ -20,6 +22,8 @@ export function createApp() {
 
   // Everything below requires a logged-in user.
   app.use('/api', requireAuth);
+  app.use('/api/users', userRoutes);
+  app.use('/api/matches', matchRoutes);
 
   app.use(notFoundHandler);
   app.use(errorHandler);
