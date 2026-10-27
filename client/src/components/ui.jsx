@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
+import { Blocks } from './Doodles.jsx';
 
 export const ErrorText = ({ error }) => (error ? <p className="error">{error}</p> : null);
 
-export const Empty = ({ children }) => <p className="muted empty">{children}</p>;
+export const Empty = ({ children }) => (
+  <div className="empty">
+    <Blocks size={110} />
+    <span>{children}</span>
+  </div>
+);
 
 // Small data-loading hook with loading and error states.
 export function useLoad(fn, deps = []) {

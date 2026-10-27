@@ -31,7 +31,7 @@ export default function Questions() {
 
   return (
     <>
-      <h1>{groupId ? 'Group questions' : 'Questions'}</h1>
+      <h1>{groupId ? 'Group questions' : 'Ask & answer'}</h1>
       {groupId && (
         <p className="small">
           <Link to={`/groups/${groupId}`}>Back to group</Link> · only members can see these.

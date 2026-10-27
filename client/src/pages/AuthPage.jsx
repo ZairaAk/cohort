@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext.jsx';
 import { ErrorText } from '../components/ui.jsx';
+import { Buddy, Dots } from '../components/Doodles.jsx';
 
 export default function AuthPage({ mode }) {
   const isRegister = mode === 'register';
@@ -32,22 +33,17 @@ export default function AuthPage({ mode }) {
 
   return (
     <div className="auth">
-      <h1>Cohort</h1>
-      <p className="muted">Find study partners and work toward common goals.</p>
+      <Buddy />
+      <h1>cohort</h1>
+      <p className="muted">Find study partners. Study together. Help each other get better.</p>
       <form onSubmit={submit} className="stack">
         {isRegister && <input placeholder="Name" value={form.name} onChange={set('name')} required />}
         <input type="email" placeholder="Email" value={form.email} onChange={set('email')} required />
-        <input
-          type="password"
-          placeholder="Password (8+ characters)"
-          value={form.password}
-          onChange={set('password')}
-          required
-        />
+        <input type="password" placeholder="Password (8+ characters)" value={form.password} onChange={set('password')} required />
         <ErrorText error={error} />
         <button disabled={busy}>{busy ? 'Please wait...' : isRegister ? 'Create account' : 'Log in'}</button>
       </form>
-      <p className="small">
+      <p className="small" style={{ marginTop: 14 }}>
         {isRegister ? (
           <>
             Have an account? <Link to="/login">Log in</Link>
@@ -58,6 +54,7 @@ export default function AuthPage({ mode }) {
           </>
         )}
       </p>
+      <Dots />
     </div>
   );
 }

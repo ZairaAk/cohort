@@ -81,11 +81,11 @@ export default function Room() {
 
       {status === 'joined' && timer && (
         <>
-          <div className="card" style={{ textAlign: 'center' }}>
+          <div className="card stage">
             <span className="tag">{LABELS[timer.phase]}</span>
-            <div className="timer">{format(remaining)}</div>
+            <div className={`timer ${timer.phase}`}>{format(remaining)}</div>
             {timer.phase === 'idle' ? (
-              <button onClick={() => send('timer:start')}>Start 25 minute focus</button>
+              <button onClick={() => send('timer:start')}>Start 25 min focus</button>
             ) : (
               <button className="secondary" onClick={() => send('timer:stop')}>
                 Stop timer

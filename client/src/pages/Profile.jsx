@@ -35,6 +35,10 @@ export default function Profile() {
   return (
     <>
       <h1>Your profile</h1>
+      <div className="row" style={{ marginBottom: 8 }}>
+        <span className="tag">{user.reputation} rep</span>
+        <span className="tag">{user.streak?.count ?? 0} day streak</span>
+      </div>
       <p className="muted">Matching uses your subjects, skill levels, and weekly availability.</p>
 
       <div className="section">
